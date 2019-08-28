@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "bitmap.h"
-#include "bitmodify.h" // Library to implement bitmap image modification for the assignment
+#include "bitmodify.h" // Library in which the image modifications are implemented
 
 #define XSIZE 2560 // Size of before image
 #define YSIZE 2048
@@ -11,6 +11,7 @@ int main() {
 	readbmp("before.bmp", image);
 
 	// Alter the image here
+	// Simple menu which calls the diferent image modifications
 	char option;
 
     printf("Choose what to do with the image:\n");
@@ -20,20 +21,17 @@ int main() {
     scanf("%c", &option);
 
     switch(option){
-    case 'a': ;
-		uchar *bigger_image = calloc(2 * XSIZE * 2 * YSIZE * 3, 1);
-		resize(image, bigger_image, XSIZE, YSIZE);
-        savebmp("after.bmp", bigger_image, 2*XSIZE, 2*YSIZE);
-        free(bigger_image);
+    case 'a': 
+		resize(image, XSIZE, YSIZE);
         break;
     case 'b':
 		invert_color(image, XSIZE, YSIZE);
-		savebmp("after.bmp", image, XSIZE, YSIZE);
         break;
     default:
 		return 0;
     }
-    printf("Go and check your new image. Bye :)\n");
+    
+    printf("\nSUCCESS!!! Go and check your new image. Bye :)\n");
 
 	free(image);
 	return 0;
