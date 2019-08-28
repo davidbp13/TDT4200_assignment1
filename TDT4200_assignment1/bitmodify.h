@@ -1,7 +1,7 @@
 #ifndef BITMODIFY_H
 #define BITMODIFY_H
 
-void samplefunc(uchar* array, int x, int y);
-//void readbmp(char *filename, uchar *array);
+void resize(uchar* array, uchar* bigger_array, int x, int y);
+void invert_color(uchar* array, int x, int y);
 
 #endif

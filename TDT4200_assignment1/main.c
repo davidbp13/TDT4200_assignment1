@@ -16,19 +16,22 @@ int main() {
     printf("Choose what to do with the image:\n");
     printf("a. Resize to 2x.\n");
     printf("b. Invert colors.\n");
-    printf("Please enter an option from the main menu or any other key to exit: ");
+    printf("Please enter an option from the main menu or enter any other key to exit: ");
     scanf("%c", &option);
 
     switch(option){
-    case 'a':
-        savebmp("after.bmp", resize(image, XSIZE, YSIZE), 2*XSIZE, 2*YSIZE);
+    case 'a': ;
+		uchar *bigger_image = calloc(2 * XSIZE * YSIZE * 3, 1);
+		resize(image, bigger_image, XSIZE, YSIZE);
+        savebmp("after.bmp", bigger_image, 2*XSIZE, 2*YSIZE);
+        free(bigger_image);
         break;
     case 'b':
 		invert_color(image, XSIZE, YSIZE);
 		savebmp("after.bmp", image, XSIZE, YSIZE);
         break;
     default:
-        break;
+		return 0;
     }
     printf("Go and check your new image. Bye :)\n");
 
