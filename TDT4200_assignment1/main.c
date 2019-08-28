@@ -21,7 +21,7 @@ int main() {
 
     switch(option){
     case 'a': ;
-		uchar *bigger_image = calloc(2 * XSIZE * YSIZE * 3, 1);
+		uchar *bigger_image = calloc(2 * XSIZE * 2 * YSIZE * 3, 1);
 		resize(image, bigger_image, XSIZE, YSIZE);
         savebmp("after.bmp", bigger_image, 2*XSIZE, 2*YSIZE);
         free(bigger_image);
