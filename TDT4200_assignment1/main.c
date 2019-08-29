@@ -17,6 +17,7 @@ int main() {
     printf("Choose what to do with the image:\n");
     printf("a. Resize to 2x.\n");
     printf("b. Invert colors.\n");
+    printf("c. Flip upside down.\n");
     printf("Please enter an option from the main menu or enter any other key to exit: ");
     scanf("%c", &option);
 
@@ -26,6 +27,9 @@ int main() {
         break;
     case 'b':
 		invert_color(image, XSIZE, YSIZE);
+        break;
+    case 'c':
+		upside_down(image, XSIZE, YSIZE);
         break;
     default:
 		return 0;

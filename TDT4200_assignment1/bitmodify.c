@@ -43,3 +43,16 @@ void invert_color(uchar* array, int x, int y){
 	}
 	savebmp("after.bmp", array, x, y);
 }
+
+void upside_down(uchar* array, int x, int y){
+	uchar *flipped_array = calloc(x * y * 3, 1); // Allocate space for flipped image
+	for (int i=0; i<y; i++ ) { // To iterate through rows
+		for (int j=0; j<x*3; j+=3) { // To iterate through columns (and each pixel component)
+			flipped_array[(3 * x * y) - (3 * i * x + j - 2)] = array[3 * i * x + j + 2]; // (3 * x * y) points to the end of the array
+			flipped_array[(3 * x * y) - (3 * i * x + j - 1)] = array[3 * i * x + j + 1]; 
+			flipped_array[(3 * x * y) - (3 * i * x + j + 0)] = array[3 * i * x + j + 0]; 
+		}
+	}
+	savebmp("after.bmp", flipped_array, x, y);
+	free(flipped_array);
+}
